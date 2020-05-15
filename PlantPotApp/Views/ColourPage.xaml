@@ -3,13 +3,99 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 BackgroundColor="Transparent"
+             xmlns:utmdev="clr-namespace:Utmdev.Xf.Components;assembly=Utmdev.Xf.ColorWheel"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              mc:Ignorable="d"
-             x:Class="PlantPotApp.Views.Page1">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="PlantPotApp.Views.ColourPage">
+	<ContentPage.Content>
+		<!--Container-->
+		<Grid
+			ColumnSpacing="5"
+			RowSpacing="5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20" /> <!--Top Space-->
+				<RowDefinition Height="350" /> <!--Colour Wheel-->
+                <RowDefinition Height="*" /> <!--Space-->
+                <RowDefinition Height="auto" /> <!--On Switch-->
+                <RowDefinition Height="auto" /> <!--Brightness Slider Text-->
+                <RowDefinition Height="auto" /> <!--Brightness Slider-->
+                <RowDefinition Height="40" /> <!--Space-->
+                <RowDefinition Height="auto" /> <!--Reset Button Text-->
+				<RowDefinition Height="20" /> <!--Bottom Space-->
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<!--Colour Wheel-->
+			<utmdev:ColorWheel 
+				x:Name="xfColourWheel"
+				FlexLayout.Basis="45%"
+				Grid.Row="1"
+				Grid.Column="0"/>
+
+			<!--Colour Example-->
+            <skia:SKCanvasView 
+				x:Name= "colourExample" 
+				PaintSurface="OnCanvasViewPaintSurface"
+				Grid.Row="1"
+				Grid.Column="0">
+            </skia:SKCanvasView>
+
+            <!--On Switch Text-->
+            <Label 
+                Text="Lights On"
+                x:Name= "onLabel"
+                TextColor="Black"
+                FontSize="Medium"
+                TranslationX="18"
+                Grid.Row="3"
+				Grid.Column="0"/>
+
+            <!--On Switch-->
+            <Switch 
+                x:Name="onSwitch"
+                Toggled="OnSwitchToggeled"
+                IsEnabled="True"
+                OnColor="Gray"
+                HorizontalOptions="Start"
+                TranslationX="120"
+                Grid.Row="3"
+				Grid.Column="0"/>
+
+            <!--Brighness Slider Text-->
+			<Label 
+				x:Name = "brightnessSliderLabel"
+				TextColor="Black"
+				FontSize="Medium"
+				TranslationX="18"
+				Grid.Row="4"
+				Grid.Column="0"/>
+
+			<!--Brighness Slider-->
+			<Slider 
+				x:Name ="brightnessSlider" 
+				Maximum="100"
+				ValueChanged="BrightnessChanged"
+                ThumbColor="Gray"
+                MinimumTrackColor="Gray"
+                MaximumTrackColor="Black"
+				Grid.Row="5"
+				Grid.Column="0"/>
+
+			<!--Reset Button-->
+			<Button 
+				x:Name="resetButton" 
+				Text="Reset to default" 
+				Clicked="ResetClicked"
+				BackgroundColor="Gray"
+				ScaleX="1"
+				ScaleY="1"
+				Grid.Row="7"
+				Grid.Column="0"/>
+			
+		</Grid>
+		
+	</ContentPage.Content>
 </ContentPage>

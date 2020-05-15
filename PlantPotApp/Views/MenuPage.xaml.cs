@@ -20,8 +20,10 @@ namespace PlantPotApp.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.Home, Title="Home"},
+                new HomeMenuItem {Id = MenuItemType.Colour, Title="Colour" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+                new HomeMenuItem {Id = MenuItemType.Settings, Title="Settings" },
             };
 
             ListViewMenu.ItemsSource = menuItems;

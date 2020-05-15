@@ -6,8 +6,10 @@ namespace PlantPotApp.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About
+        Home,
+        About,
+        Colour,
+        Settings
     }
     public class HomeMenuItem
     {
