@@ -10,6 +10,8 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Label Text="Moisture has not been read yet"
+                   x:Name="moistureLabel"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using PlantPotApp.Models;
+using PlantPotApp.Services;
 
 namespace PlantPotApp.Views
 {
@@ -15,10 +16,11 @@ namespace PlantPotApp.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
-        public MainPage()
+        BLEConnection server;
+        public MainPage(BLEConnection server)
         {
             InitializeComponent();
-
+            this.server = server;
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.Home, (NavigationPage)Detail);
@@ -31,10 +33,10 @@ namespace PlantPotApp.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Home:
-                        MenuPages.Add(id, new NavigationPage(new HomePage()));
+                        MenuPages.Add(id, new NavigationPage(new HomePage(server)));
                         break;
                     case (int)MenuItemType.Colour:
-                        MenuPages.Add(id, new NavigationPage(new ColourPage()));
+                        MenuPages.Add(id, new NavigationPage(new ColourPage(server)));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));

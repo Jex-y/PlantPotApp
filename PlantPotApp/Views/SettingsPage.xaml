@@ -7,14 +7,10 @@
              x:Class="PlantPotApp.Views.SettingsPage">
     <TableView Intent="Settings" BackgroundColor="Transparent">
         <TableRoot>
-            <TableSection Title="General" TextColor="White">
-                
-            </TableSection>
-
-            <TableSection Title="Power" TextColor="White">
-                <SwitchCell Text = "Scheduled lights on" On="False"/>
-
-                <SwitchCell Text= "Scheduled lights off" On="False"/>
+            <TableSection Title="Connection">
+                <TextCell
+                    Text="Device not connected"
+                    x:Name="bleConnected"></TextCell>
             </TableSection>
         </TableRoot>
     </TableView>
